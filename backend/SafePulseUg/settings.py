@@ -67,9 +67,9 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIDDLEWARE
 # ─────────────────────────────────────────────────────────────
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',           # ← MUST be FIRST
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',       # ← Static files
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -320,7 +320,7 @@ and enter: `Bearer <your_access_token>`
 
 
 # ─────────────────────────────────────────────────────────────
-# LOGGING
+# LOGGING — Console only (works on Render & locally)
 # ─────────────────────────────────────────────────────────────
 LOGGING = {
     'version': 1,
@@ -331,10 +331,6 @@ LOGGING = {
             'format': '[{levelname}] {asctime} | {module} | {message}',
             'style':  '{',
         },
-        'simple': {
-            'format': '[{levelname}] {message}',
-            'style':  '{',
-        },
     },
 
     'handlers': {
@@ -342,42 +338,36 @@ LOGGING = {
             'class':     'logging.StreamHandler',
             'formatter': 'verbose',
         },
-        'file': {
-            'class':     'logging.FileHandler',
-            'filename':  BASE_DIR / 'logs' / 'safepulse.log',
-            'formatter': 'verbose',
-            'level':     'DEBUG',
-        },
     },
 
     'loggers': {
         'django': {
-            'handlers':  ['console', 'file'],
+            'handlers':  ['console'],
             'level':     'INFO',
             'propagate': True,
         },
         'apps.accounts': {
-            'handlers':  ['console', 'file'],
+            'handlers':  ['console'],
             'level':     'DEBUG',
             'propagate': False,
         },
         'apps.crimes': {
-            'handlers':  ['console', 'file'],
+            'handlers':  ['console'],
             'level':     'DEBUG',
             'propagate': False,
         },
         'apps.analysis': {
-            'handlers':  ['console', 'file'],
+            'handlers':  ['console'],
             'level':     'DEBUG',
             'propagate': False,
         },
         'apps.reports': {
-            'handlers':  ['console', 'file'],
+            'handlers':  ['console'],
             'level':     'DEBUG',
             'propagate': False,
         },
         'apps.dashboard': {
-            'handlers':  ['console', 'file'],
+            'handlers':  ['console'],
             'level':     'DEBUG',
             'propagate': False,
         },
