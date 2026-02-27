@@ -1,0 +1,25 @@
+# Virtual Environment
+venv/
+env/
+
+# Environment Variables (NEVER commit this)
+.env
+
+# Django
+*.pyc
+__pycache__/
+*.pyo
+db.sqlite3
+media/
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
